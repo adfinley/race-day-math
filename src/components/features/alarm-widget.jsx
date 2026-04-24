@@ -124,6 +124,8 @@ function WidgetContent({ timeStr, period, sticky }) {
       padding: 8,
       display: 'flex',
       gap: 8,
+      width: 280,
+      margin: '0 auto',
       ...(sticky ? { position: 'sticky', top: 76, boxShadow: '0 8px 18px rgba(0,0,0,0.15)' } : {}),
     }}>
      

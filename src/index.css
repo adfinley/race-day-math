@@ -107,6 +107,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
   max-width: 400px;
   margin-top: 8px;
   padding: 2px;
+  min-width: 80px;
 }
 .seg-control-indicator {
   position: absolute; top: 2px; bottom: 2px; height: auto;

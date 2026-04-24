@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { buildTimeline, formatTime12h, formatPeriod, formatMins } from '../../lib/time-utils';
 import { C, SEC, TER } from '../../lib/colours';
 import ResultCardV2 from './result-card-v2';
 import AlarmWidget from './alarm-widget';
+
 
 const MODE_OPTIONS = [
   { key:'Bike',      label:'Bike'      },
@@ -158,14 +159,29 @@ const Toggle = ({ value, onChange }) => {
 //  macOS Segmented Control 
 const SegControl = ({ value, onChange, options }) => {
   const btnRefs = useRef([]);
+  const containerRef = useRef(null);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 2, width: 0 });
-  useEffect(() => {
+
+  const updateIndicator = useCallback(() => {
     const idx = Math.max(0, options.findIndex(o => o.toLowerCase() === value));
     const btn = btnRefs.current[idx];
     if (btn) setIndicatorStyle({ left: btn.offsetLeft, width: btn.offsetWidth });
   }, [value, options]);
+
+  useEffect(() => {
+    updateIndicator();
+  }, [updateIndicator]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const ro = new ResizeObserver(updateIndicator);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [updateIndicator]);
+
   return (
-    <div className="seg-control">
+    <div className="seg-control" ref={containerRef}>
       <div className="seg-control-indicator" style={indicatorStyle} />
       {options.map((opt, i) => {
         const sel = opt.toLowerCase() === value;
