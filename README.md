@@ -4,7 +4,7 @@
 
 **Race Day Math** is a precision utility for competitive runners designed to eliminate "race-morning brain fog." Instead of manually calculating when to wake up based on transit times, bathroom lineups, and corral closures, this app reverse-engineers your entire morning from the moment the starter pistol goes off.
 
-🔗 **[Try it live →](https://your-vercel-url.vercel.app)**
+🔗 **[Try it live →](https://race-day-math.vercel.app)**
 
 ---
 
