@@ -144,7 +144,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
   padding-bottom: env(safe-area-inset-bottom, 0px);
   animation: sheetSlideUp 0.45s cubic-bezier(0.32, 0.72, 0, 1) forwards;
   overscroll-behavior: contain;
-  box-shadow: 0 0 0 1px #727272; margin: 8px;
+  margin: 8px;
 }
 @keyframes sheetSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 .sheet-panel.closing { animation: sheetSlideDown 0.25s ease-out forwards; }
@@ -156,7 +156,6 @@ button { cursor: pointer; transition: all 0.2s ease; }
     transform: translate(-50%, -50%);
     width: 520px; max-height: 85dvh; border-radius: 26px;
     animation: modalPopIn 0.22s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-    box-shadow: 0 0 0 1px #727272;
   }
   @keyframes modalPopIn {
     from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) scale(0.97); }
@@ -291,10 +290,11 @@ button { cursor: pointer; transition: all 0.2s ease; }
   cursor: pointer;
   text-align: left;
   transition: background 0.15s ease;
+  min-width: 0;
 }
 .rdm-seg-btn:hover { background: var(--white); }
 .rdm-seg-icon  { display: flex; align-items: center; flex-shrink: 0; width: 24px; height: 24px; }
-.rdm-seg-label { font-family: var(--font-sec); font-size: 14px; line-height: 20px; font-weight: 500; color: var(--black); flex-shrink: 0; width: 220px; }
+.rdm-seg-label { font-family: var(--font-sec); font-size: 14px; line-height: 20px; font-weight: 500; color: var(--black); flex: 1 1 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .rdm-seg-summary { display: none; }
 .rdm-seg-edit  { margin-left: auto; font-family: var(--font-sec); font-size: 14px; font-weight: 500; color: var(--accent-2); flex-shrink: 0; }
 

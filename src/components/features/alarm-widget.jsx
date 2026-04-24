@@ -115,12 +115,12 @@ export default function AlarmWidget({
 }
 
 function WidgetContent({ timeStr, period, sticky }) {
-  const innerBase = { background: '#2E2E2E', borderRadius: 16 };
+  const innerBase = { background: '#2E2E2E', borderRadius: 20 };
 
   return (
     <div style={{
       background: '#212121',
-      borderRadius: 20,
+      borderRadius: 26,
       padding: 8,
       display: 'flex',
       gap: 8,

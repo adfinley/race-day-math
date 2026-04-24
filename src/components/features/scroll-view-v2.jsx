@@ -233,7 +233,7 @@ const SegmentSheetContent = ({ leg, onSave, onRemove, onCancel, isEditing, isAnc
   const legDisplayLabel = leg?._anchorLabel || null;
 
   return (
-    <div style={{ padding: '0 24px 32px' }}>
+    <div style={{ padding: '0 16px 24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', padding: '20px 0', position: 'relative' }}>
         <button onClick={onCancel} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: '50%', background: C.white, color: C.accent2, border: 'none', cursor: 'pointer', flexShrink: 0, padding: 0 }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6L18 18"/></svg>
@@ -391,7 +391,7 @@ const SegmentCard = ({ leg, isLast, total, isLocked, isFloating, isPlaceholder, 
         )}
 
         {/* Segment button */}
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <button
             className="rdm-seg-btn locked"
             onClick={() => { if (!isLocked && !isFloating) setSheetOpen(true); }}
