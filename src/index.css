@@ -343,7 +343,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
   overflow: hidden;
   margin: 0 0 8px;
 }
-.rdm-results-inner { padding: 24px 24px 16px 24px; }
+.rdm-results-inner { padding: 24px 16px 16px 16px; }
 .rdm-results-header {
   display: flex;
   justify-content: space-between;
@@ -424,7 +424,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
   .rdm-card {
     padding: 32px 24px;
   }
-
+  .rdm-results-inner { padding: 24px 24px 16px 24px; }
   .rdm-dragbar {
     width:450px!important;
   }
