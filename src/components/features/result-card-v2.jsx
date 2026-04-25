@@ -13,25 +13,12 @@ const ExportIcon = () => (
 );
 
 export default function ResultCardV2({ timeline }) {
-  const { steps, wakeUpTime, fuelTime, raceStartTime } = timeline;
+  const { steps, wakeUpTime, raceStartTime } = timeline;
 
   // Fuel up is inserted between bathroom-post-warmup and corral.
   // Find the corral step index and insert fuel just before it.
   // This preserves the section order built by buildTimeline rather than re-sorting.
-  const displayRows = (() => {
-    const rows = [...(steps || [])];
-    if (!fuelTime) return rows;
-    const fuelStep = { startTime: fuelTime, label: 'Fuel up', minutes: 15, type: 'fuel' };
-    // Insert just before the 'corral' step
-    const coralIdx = rows.findIndex(r => r.type === 'corral');
-    if (coralIdx >= 0) {
-      rows.splice(coralIdx, 0, fuelStep);
-    } else {
-      // Fallback: append before race start
-      rows.push(fuelStep);
-    }
-    return rows;
-  })();
+  const displayRows = steps || [];
 
   const handleShare = async () => {
     const formatLine = (time, label, duration = '') => {

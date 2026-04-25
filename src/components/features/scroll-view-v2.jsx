@@ -707,7 +707,7 @@ export default function ScrollViewV2({ data, update, reset }) {
         <div className="rdm-page-left" ref={leftColRef}>
 
           {/*  Page header  */}
-          <header className="rdm-page-header" style={{margin:'0 0 0 24px', justifyContent: 'space-between', paddingRight: 24}}>
+          <header className="rdm-page-header" style={{justifyContent: 'space-between', paddingRight: 24}}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span className="rdm-page-header-text">Race Day Math</span>
             <svg width={24} height={24} viewBox="0 0 32 32" fill="none">

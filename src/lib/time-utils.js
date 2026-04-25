@@ -110,8 +110,6 @@ export const buildTimeline = (formData) => {
   const steps = [];
   let lateArrival = false;
 
-  const fuelTime = subtractMinutes(startTime, 15);
-
   if (!isFixed) {
     // ── STANDARD FLOW: count backward from race start ────────────
     let cursor = startTime;
@@ -127,7 +125,8 @@ export const buildTimeline = (formData) => {
     // Chronological order we want: warm up → bathroom post warmup → bathroom pre → ...
     // So push order must be: corral → bathroom-post-warmup → warm up → ...
     // (bathroom-post-warmup pushed before warm up = it gets a later start time = appears after warm up)
-    push('Get in the corral', (coralTime || 0) + bufferMins, 'Find your position', '🐰', 'corral');
+  push('Get in the corral', coralTime || 0, 'Find your position', '🐰', 'corral');
+  if (bufferMins > 0) push('Race size buffer', bufferMins, 'Extra time for crowd & logistics', '🏟️', 'race-buffer');
     if (doWarmup === 'yes' && doBathroomPostWarmup === 'yes') {
       const w = parseInt(bathroomPostWarmup)||0, u = parseInt(bathroomPostWarmupUseTime)||0, c = parseInt(bathroomPostWarmupCount)||1;
       const tot = (w + u) * c;
@@ -187,7 +186,7 @@ export const buildTimeline = (formData) => {
     // steps are in reverse-chronological push order — reverse to get chronological order
     const sorted = [...steps].reverse();
     const wakeUpTime = subtractMinutes(cursor, 5);
-    return { steps: sorted, wakeUpTime, fuelTime, raceStartTime: startTime, deadlineTime: null, deadlineLabel: null, isLate: false };
+    return { steps: sorted, wakeUpTime, raceStartTime: startTime, deadlineTime: null, deadlineLabel: null, isLate: false };
   }
 
   // ── FIXED DEPARTURE FLOW: bi-directional split ───────────────
@@ -291,7 +290,8 @@ export const buildTimeline = (formData) => {
       cursor = subtractMinutes(cursor, minutes);
       steps.push({ label, minutes, startTime: cursor, endTime: addMinutes(cursor, minutes), note, emoji, type });
     };
-    push('Get in the corral', parseInt(coralTime)||0, 'Find your position', '🐰', 'corral');
+    push('Get in the corral', coralTime || 0, 'Find your position', '🐰', 'corral');
+if (bufferMins > 0) push('Race size buffer', bufferMins, 'Extra time for crowd & logistics', '🏟️', 'race-buffer');
     if (doWarmup === 'yes' && doBathroomPostWarmup === 'yes') {
       const w = parseInt(bathroomPostWarmup)||0, u = parseInt(bathroomPostWarmupUseTime)||0, c = parseInt(bathroomPostWarmupCount)||1;
       const tot = (w + u) * c;
@@ -346,7 +346,6 @@ export const buildTimeline = (formData) => {
   return {
     steps: sorted,
     wakeUpTime,
-    fuelTime,
     raceStartTime: startTime,
     deadlineTime: anchorTime,
     deadlineLabel: anchorLabel,

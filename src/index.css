@@ -176,7 +176,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 0 24px;
+  margin: 0 0 0 16px;
 }
 .rdm-page-header-text {
   font-family: var(--font-sec);
@@ -405,6 +405,7 @@ button { cursor: pointer; transition: all 0.2s ease; }
 
   .rdm-page-header {
     padding-top: 16px;
+    margin: 0 0 0 24px;
   }
 
   .rdm-page-layout {
