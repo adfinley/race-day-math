@@ -458,3 +458,9 @@ button { cursor: pointer; transition: all 0.2s ease; }
 }
 
 
+@media (display-mode: standalone) {
+  .rdm-results-outer, .sheet-panel {
+    border-bottom-left-radius: 44px;
+    border-bottom-right-radius: 44px;
+  }
+}
